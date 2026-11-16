@@ -5,6 +5,9 @@
 int main() {
     std::string a, b;
 
+    std::getline(std::cin, a);
+    std::getline(std::cin, b);
+
     if (!(std::cin >> a >> b)) {
         std::cerr << "bad input\n";
         return 1;
@@ -18,11 +21,11 @@ int main() {
     std::map<char, int> seen;
 
     for (int i = 0; i < a.size(); i++) {
-        seen[a[i]]++;
-        seen[b[i]]--;
+        seen[std::tolower(a[i])]++;
+        seen[std::tolower(b[i])]--;
     }
 
-    for (std::pair<char, int> ch : seen) {
+    for (const std::pair<char, int>& ch : seen) {
         if (ch.second != 0) {
             std::cout << "not annagrams\n";
             return 0;
