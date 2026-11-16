@@ -1,0 +1,9 @@
+11/16/26 20:02:06 opening file "input.txt"
+11/16/26 20:02:06 file "input.txt" has been opened successfully
+11/16/26 20:02:06 opening file "output.txt"
+11/16/26 20:02:06 file "output.txt" has been opened successfully
+11/16/26 20:02:06 reading lines from "input.txt"
+11/16/26 20:02:06 read a="abcabcabc", b="bacbacbac
+11/16/26 20:02:06 result is: true
+11/16/26 20:02:06 writing answer to "output.txt"
+11/16/26 20:02:06 program has ended with code 0
