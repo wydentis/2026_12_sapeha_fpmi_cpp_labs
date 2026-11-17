@@ -35,15 +35,36 @@ void make_log(std::ofstream& logger, const std::string& msg) {
     logger << FormatTime(Now(), true) << " " << msg << std::endl;
 }
 
+bool is_anagrams(const std::map<char, int>& seen) {
+    for (const std::pair<char, int>& ch : seen) {
+        if (ch.second != 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 int main() {
     std::ofstream flog("log.txt");
+    if (!flog) {
+        return 1;
+    }
 
     make_log(flog, "opening file \"input.txt\"");
     std::ifstream fin("input.txt");
+    if (!fin) {
+        make_log(flog, "file \"input.txt\" cannot be open");
+        return 1;
+    }
     make_log(flog, "file \"input.txt\" has been opened successfully");
 
     make_log(flog, "opening file \"output.txt\"");
     std::ofstream fout("output.txt");
+    if (!fout) {
+        make_log(flog, "file \"output.txt\" cannot be open");
+        return 1;
+    }
     make_log(flog, "file \"output.txt\" has been opened successfully");
 
     std::string a, b;
@@ -71,14 +92,7 @@ int main() {
         seen[std::tolower(b[i])]--;
     }
 
-    bool res = true;
-
-    for (const std::pair<char, int>& ch : seen) {
-        if (ch.second != 0) {
-            res = false;
-            break;
-        }
-    }
+    bool res = is_anagrams(seen);
 
     make_log(flog, std::string("result is: ") + (res ? "true" : "false"));
 
