@@ -1,1 +1,1 @@
-add_sources(test_multiplication test.cpp)
+add_sources(test_multiplication multiplication.cpp test.cpp)
